@@ -107,16 +107,82 @@ settings:
     type: heading
     level: 1
     collapsed: true
+  - id: cg-autohide-titlebar
+    title: Auto-hide Titlebar
+    description: "Title bar hides until hover"
+    type: class-toggle
+    default: false
+  - id: cg-slim-scrollbars
+    title: Slim Scrollbars
+    description: "Minimalist scrollbars with accent color"
+    type: class-toggle
+    default: false
+  - id: cg-statusbar-header
+    title: "Status Bar"
+    description: "Select status bar style"
+    type: heading
+    level: 2
+    collapsed: true
+  - id: cg-status-bar
+    title: Show Status Bar
+    description: "Show the bottom status bar (hidden by default)"
+    type: class-toggle
+    default: false
+  - id: cg-tabs-header
+    title: "Tabs"
+    description: "Tab bar appearance and behavior"
+    type: heading
+    level: 2
+    collapsed: true
+  -
+      id: cg-tab-style
+      title: "Tab style"
+      type: class-select
+      default: cg-tab-floating
+      options:
+          -
+              label: Floating Tabs
+              value: cg-tab-floating
+          -
+              label: Minimal Tabs
+              value: cg-tab-minimal
+  - id: cg-tab-gap
+    title: Tab Gap
+    description: "Spacing between workspace tabs"
+    type: variable-number
+    default: 10
+    format: px
+  -
+      id: cg-custom-tab-height
+      title: "Custom tab height"
+      type: variable-number
+      default: 40
+      format: px
+  - id: cg-workspace-layout-header
+    title: Workspace Layout
+    description: "Workspace layout and arrangement"
+    type: heading
+    level: 2
+    collapsed: true
+  - id: cg-workspace-layout
+    title: Workspace Layout variant
+    type: class-select
+    default: cg-layout-default
+    options:
+      - label: Default
+        value: cg-layout-default
+      - label: Cards
+        value: cg-card-layout
   - id: cg-hide-borders
     title: Hide Borders
     description: "Remove UI borders for a cleaner look"
     type: class-toggle
     default: true
-  - id: cg-card-layout
-    title: Card Layout
-    description: "Card style for main content"
-    type: class-toggle
-    default: true
+  - id: cg-card-layout-settings-header
+    title: Card Layout Settings
+    type: heading
+    level: 3
+    collapsed: true
   - id: cg-card-filebrowser
     title: Card Layout — File Browser
     description: "Card style for the file explorer"
@@ -132,39 +198,13 @@ settings:
     description: "Add shadows to layout cards"
     type: class-toggle
     default: false
-  - id: cg-status-bar
-    title: Show Status Bar
-    description: "Show the bottom status bar (hidden by default)"
-    type: class-toggle
-    default: false
-  - id: cg-tab-gap
-    title: Tab Gap
-    description: "Spacing between workspace tabs"
-    type: variable-number
-    default: 10
-    format: px
-  - id: cg-floating-header
-    title: Floating Header
-    description: "Document header appears only on hover"
-    type: class-toggle
-    default: false
-  - id: cg-autohide-titlebar
-    title: Auto-hide Titlebar
-    description: "Title bar hides until hover"
-    type: class-toggle
-    default: false
-  - id: cg-slim-scrollbars
-    title: Slim Scrollbars
-    description: "Minimalist scrollbars with accent color"
-    type: class-toggle
-    default: false
   # Support
   - id: cg-support-header
     title: Support CyberGlow
     description: "If you like the theme, here are some ways to support development"
     type: heading
     level: 1
-    collapsed: false
+    collapsed: true
   - id: cg-support-star
     title: "⭐ Star the Theme on GitHub"
     description: "https://github.com/DevM0nk3y/CyberGlow"
@@ -177,6 +217,7 @@ settings:
     markdown: true
 
 */
+
 
 
 /* Style Settings — Support heading en cian */
@@ -662,6 +703,9 @@ body.cg-hide-borders.cg-card-layout {
 body.cg-hide-borders.cg-card-layout .menu {
   border: 0px !important;
 }
+body.cg-hide-borders.cg-tab-floating .workspace-tab-header {
+  border: none !important;
+}
 
 /* -----------------------------------------------
  *  Card Layout — Variables y estructura base
@@ -748,7 +792,7 @@ body.cg-card-layout .mod-right-split .workspace-leaf {
 /* Paneles laterales — sobreescribir variables de Obsidian en el scope del sidebar.
  * Obsidian aplica --background-primary en workspace-leaf-content vía sus CSS base.
  * Al redefinirla aquí, el leaf-content hereda el color de card sin necesitar !important. */
-body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content,
+body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content:not([data-type="file-explorer"]),
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content {
   --background-primary: var(--cg-card-fg);
   --background-primary-alt: var(--cg-card-fg);
@@ -933,20 +977,6 @@ body.cg-card-layout.cg-card-actions .side-dock-actions {
 /* Card shadows */
 .cg-card-shadows .workspace-leaf-content {
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(var(--cg-primary-rgb), 0.04);
-}
-
-/* Floating header */
-.cg-floating-header .view-header {
-  position: absolute;
-  width: 100%;
-  z-index: 10;
-  background: transparent;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.cg-floating-header .view-header:hover {
-  opacity: 1;
-  background: var(--cg-bg-primary);
 }
 
 /* Autohide titlebar — implementación completa (inspirada en AnuPpuccin) */
@@ -1407,6 +1437,167 @@ input[type="range"] {
 }
 
 /* ============================================================
+   SECCIÓN 8A — Tab Styles: Floating & Minimal
+   ============================================================ */
+
+/* --- Custom tab height variable --- */
+body.cg-tab-floating,
+body.cg-tab-minimal {
+  --cg-custom-tab-height: 40px;
+  --header-height: var(--cg-custom-tab-height, 40px);
+}
+
+/* ---- Floating Tabs (adapted from AnuPuccin Safari-style Animated) ---- */
+
+body.cg-tab-floating .workspace-tabs:not(.mod-stacked) {
+  --tab-background: var(--cg-bg-secondary);
+  --tab-background-active: var(--cg-bg-primary);
+  --tab-font-size: 12px;
+  --tab-height: calc(var(--header-height) * 0.7);
+  --tab-max-width: 200px;
+  --tab-max-width-active: 300px;
+}
+
+body.cg-tab-floating .workspace-tabs:not(.mod-stacked) .workspace-tab-header::before,
+body.cg-tab-floating .workspace-tabs:not(.mod-stacked) .workspace-tab-header::after,
+body.cg-tab-floating .workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner::after {
+  display: none;
+}
+
+body.cg-tab-floating .mod-vertical:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container-inner,
+body.cg-tab-floating .mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-container-inner {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  gap: var(--cg-tab-gap, 10px);
+}
+
+body.cg-tab-floating .mod-vertical:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header,
+body.cg-tab-floating .mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  background: var(--tab-background);
+  border-radius: 6px;
+  box-shadow: none !important;
+  height: var(--tab-height);
+  padding: 0 !important;
+  transition: 400ms, background-color 150ms ease-in-out;
+  border: 1px solid rgba(var(--cg-primary-rgb), 0.12);
+}
+
+body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  max-width: var(--tab-max-width);
+}
+
+body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
+  padding: 0 4px 0 8px;
+  transition: 400ms, background-color 150ms ease-in-out, max-width 400ms;
+  color: var(--cg-text-muted);
+}
+
+body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button,
+body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon {
+  color: var(--cg-text-muted);
+}
+
+body.cg-tab-floating .workspace .mod-root .workspace-tab-header-inner::after {
+  display: none;
+}
+
+body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  flex-grow: 1.67;
+  max-width: var(--tab-max-width-active);
+  background-color: var(--cg-bg-primary);
+}
+
+body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--cg-primary) !important;
+}
+
+body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--cg-active);
+}
+
+body.cg-tab-floating .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title {
+  color: rgba(var(--cg-primary-rgb), 0.5);
+}
+
+body.cg-tab-floating .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background-color: transparent;
+}
+
+body.cg-tab-floating .sidebar-toggle-button.mod-left,
+body.cg-tab-floating .sidebar-toggle-button.mod-right {
+  align-items: center;
+}
+
+body.cg-tab-floating .sidebar-toggle-button.mod-left .clickable-icon,
+body.cg-tab-floating .sidebar-toggle-button.mod-right .clickable-icon {
+  height: var(--tab-height);
+}
+
+/* ---- Minimal Tabs (adapted from AnuPuccin mini-tab style) ---- */
+
+body.cg-tab-minimal {
+  --header-height: var(--cg-custom-tab-height, 40px);
+  --tab-stacked-header-width: 40px;
+}
+
+/* Visual alignment: align tabs with card edge */
+body.cg-tab-floating .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner,
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner {
+  justify-content: flex-start !important;
+}
+
+/* All tabs: fully transparent, no shadow, no border */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header {
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  max-width: 200px;
+}
+
+/* Kill all pseudo-elements (corner curves, separators) */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header::before,
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header::after,
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header *::after {
+  display: none;
+}
+
+/* Active tab: bottom border accent only, no background */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header.is-active {
+  background-color: transparent;
+  border-bottom: 2px solid var(--cg-primary);
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Active tab inner: no background, compact */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background-color: transparent;
+  border-radius: 0;
+  margin-top: 0;
+  padding-bottom: 4px;
+}
+
+/* Active tab title: accent color */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+  color: var(--cg-primary);
+}
+
+/* Hover: very subtle tint, no background */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header:hover .workspace-tab-header-inner {
+  background-color: rgba(var(--cg-primary-rgb), 0.05);
+}
+
+/* Inactive tab inner: no background */
+body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header:not(.is-active) .workspace-tab-header-inner {
+  background-color: transparent;
+}
+
+/* ============================================================
    SECCIÓN 8 — Eliminación de bordes (fuera del card layout)
    ============================================================ */
 
@@ -1440,6 +1631,16 @@ body:not(.cg-card-layout) .workspace-split.mod-root .workspace-leaf {
 body:not(.cg-card-layout) .workspace-leaf.mod-active .workspace-leaf-content {
   border: none;
   box-shadow: none;
+}
+
+/* Toggle switches — off state styling */
+.checkbox-container:not(.is-enabled) {
+  background-color: var(--cg-bg-secondary);
+  outline: 1px solid rgba(var(--cg-primary-rgb), 0.3);
+  outline-offset: -1px;
+}
+.checkbox-container:not(.is-enabled) .checkbox-container-thumb {
+  background-color: var(--cg-text-faint);
 }
 
 /* ============================================================
@@ -1489,4 +1690,45 @@ body.cg-card-layout .workspace-split.mod-left-split .workspace-sidedock-vault-pr
 
 body.cg-card-layout .workspace-split:not(.mod-root) .graph-controls {
   background-color: var(--cg-bg-secondary);
+}
+
+/* Style Settings — contenido de sub-headings como card */
+.style-settings-heading[data-level="2"] {
+  margin-bottom: 4px;
+}
+.style-settings-heading[data-level="2"] + .style-settings-container {
+  background-color: rgba(24, 25, 38, 0.3);
+  padding: 8px 8px 8px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--cg-primary-rgb), 0.06);
+  margin-top: 4px;
+}
+.style-settings-heading[data-level="2"] + .style-settings-container > .setting-item:not(.style-settings-heading) {
+  background-color: transparent;
+}
+.style-settings-heading[data-level="3"] {
+  margin-bottom: 4px;
+}
+.style-settings-heading[data-level="3"] + .style-settings-container {
+  background-color: rgba(24, 25, 38, 0.4);
+  padding: 8px 8px 8px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--cg-primary-rgb), 0.06);
+  margin-top: 4px;
+}
+.style-settings-heading[data-level="3"] + .style-settings-container > .setting-item:not(.style-settings-heading) {
+  background-color: transparent;
+}
+.style-settings-heading[data-level="1"] {
+  margin-bottom: 4px;
+}
+.style-settings-heading[data-level="1"] + .style-settings-container {
+  background-color: var(--cg-bg-secondary);
+  padding: 8px 8px 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--cg-primary-rgb), 0.06);
+  margin-top: 4px;
+}
+.style-settings-heading[data-level="1"] + .style-settings-container > .setting-item:not(.style-settings-heading) {
+  background-color: transparent;
 }
