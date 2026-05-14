@@ -29,134 +29,170 @@
 name: CyberGlow
 id: cyberglow-settings
 settings:
-  # Colores
+  # Colors
   - id: cg-colors-header
-    title: Colores
+    title: Colors
+    description: "Theme Accent, Active Color, Background Intensity"
     type: heading
     level: 1
     collapsed: true
   - id: cg-primary-color
-    title: Color Primario
-    description: "Color de acento principal (default: cian)"
+    title: Primary Color
+    description: "Main accent color (default: cyan)"
     type: variable-themed-color
     format: hex
     default-dark: '#00FFFF'
   - id: cg-secondary-color
-    title: Color Secundario
-    description: "Color secundario para hover y detalles (default: magenta)"
+    title: Secondary Color
+    description: "Secondary color for hover and details (default: magenta)"
     type: variable-themed-color
     format: hex
     default-dark: '#FF00FF'
   - id: cg-active-color
-    title: Color Activo
-    description: "Color para elementos activos/seleccionados"
+    title: Active Color
+    description: "Color for active/selected elements"
     type: variable-themed-color
     format: hex
     default-dark: '#FF00FF'
   - id: cg-bg-intensity
-    title: Intensidad del Fondo
-    description: "Qué tan oscuro es el fondo"
+    title: Background Intensity
+    description: "How dark the background is"
     type: class-select
     default: cg-bg-default
     options:
-      - label: Abyss (más oscuro)
+      - label: Abyss (darkest)
         value: cg-bg-abyss
       - label: Default
         value: cg-bg-default
-      - label: Elevated (más claro)
+      - label: Elevated (lightest)
         value: cg-bg-elevated
   # Editor
   - id: cg-editor-header
     title: Editor
+    description: "Bold, Italic, Headings styling"
     type: heading
     level: 1
     collapsed: true
   - id: cg-colored-bold
-    title: Bold en color primario
-    description: "Texto en negrita usa el color primario del tema"
+    title: Colored Bold
+    description: "Bold text uses the primary theme color"
     type: class-toggle
     default: false
   - id: cg-colored-italic
-    title: Italic en color activo
-    description: "Texto en cursiva usa el color activo del tema"
+    title: Colored Italic
+    description: "Italic text uses the active theme color"
     type: class-toggle
     default: false
   - id: cg-colored-headings
-    title: Headings con gradiente neon
-    description: "Los encabezados usan colores neon degradados"
+    title: Neon Gradient Headings
+    description: "Headings use neon gradient colors"
     type: class-toggle
     default: false
-  # Bloques de Código
+  # Code Blocks
   - id: cg-code-header
-    title: Bloques de Código
+    title: Code Blocks
+    description: "Syntax highlighting and code appearance"
     type: heading
     level: 1
     collapsed: true
   - id: cg-midnight-toggle
     title: Xcode Midnight
-    description: "Usar paleta Xcode Midnight para syntax highlighting"
+    description: "Use Xcode Midnight palette for syntax highlighting"
     type: class-toggle
     default: true
-  # Interfaz
+  # Workspace
   - id: cg-ui-header
-    title: Interfaz
+    title: Workspace
+    description: "Layout, Cards, Tabs, Status Bar, Scrollbars, etc."
     type: heading
     level: 1
     collapsed: true
   - id: cg-hide-borders
-    title: Ocultar Bordes
-    description: "Elimina bordes de la UI para un look más limpio"
+    title: Hide Borders
+    description: "Remove UI borders for a cleaner look"
     type: class-toggle
     default: true
   - id: cg-card-layout
     title: Card Layout
-    description: "Estilo de tarjetas en el contenido principal"
+    description: "Card style for main content"
     type: class-toggle
     default: true
   - id: cg-card-filebrowser
     title: Card Layout — File Browser
-    description: "Estilo de tarjetas en el explorador de archivos"
+    description: "Card style for the file explorer"
     type: class-toggle
     default: true
   - id: cg-card-actions
-    title: Card Layout — Panel de Acciones
-    description: "Estilo de tarjetas en el panel lateral de acciones"
+    title: Card Layout — Actions Panel
+    description: "Card style for the side actions panel"
     type: class-toggle
     default: true
   - id: cg-card-shadows
-    title: Sombras en Cards
-    description: "Agrega sombra a las tarjetas del layout"
+    title: Card Shadows
+    description: "Add shadows to layout cards"
     type: class-toggle
     default: false
   - id: cg-status-bar
-    title: Mostrar Status Bar
-    description: "Muestra la barra de estado inferior (oculta por defecto)"
+    title: Show Status Bar
+    description: "Show the bottom status bar (hidden by default)"
     type: class-toggle
     default: false
   - id: cg-tab-gap
-    title: Espacio entre Tabs
-    description: "Separación entre las pestañas del workspace"
+    title: Tab Gap
+    description: "Spacing between workspace tabs"
     type: variable-number
     default: 10
     format: px
   - id: cg-floating-header
-    title: Header Flotante
-    description: "El header del documento aparece solo al hacer hover"
+    title: Floating Header
+    description: "Document header appears only on hover"
     type: class-toggle
     default: false
   - id: cg-autohide-titlebar
-    title: Auto-ocultar Titlebar
-    description: "La barra de título se oculta hasta hacer hover"
+    title: Auto-hide Titlebar
+    description: "Title bar hides until hover"
     type: class-toggle
     default: false
   - id: cg-slim-scrollbars
-    title: Scrollbars Delgadas
-    description: "Scrollbars minimalistas con color de acento"
+    title: Slim Scrollbars
+    description: "Minimalist scrollbars with accent color"
     type: class-toggle
     default: false
+  # Support
+  - id: cg-support-header
+    title: Support CyberGlow
+    description: "If you like the theme, here are some ways to support development"
+    type: heading
+    level: 1
+    collapsed: false
+  - id: cg-support-star
+    title: "⭐ Star the Theme on GitHub"
+    description: "https://github.com/DevM0nk3y/CyberGlow"
+    type: info-text
+    markdown: true
+  - id: cg-support-issue
+    title: "🐛 Submit an Issue on GitHub"
+    description: "https://github.com/DevM0nk3y/CyberGlow/issues"
+    type: info-text
+    markdown: true
 
 */
 
+
+/* Style Settings — Support heading en cian */
+.style-settings-container .setting-item[data-id="cg-support-header"] .setting-item-name {
+  color: var(--cg-primary);
+}
+
+/* Style Settings — gradient bar bajo Colors */
+.style-settings-container .setting-item[data-id="cg-colors-header"] .setting-item-name::after {
+  content: "";
+  display: block;
+  height: 3px;
+  margin-top: 6px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #00FFFF, #00FF88, #FFFF00, #FF8800, #FF00FF, #8800FF, #00FFFF);
+}
 
 /* ============================================================
    SECCIÓN 2 — Variables de Fundación
