@@ -52,7 +52,7 @@ settings:
     description: "Color para elementos activos/seleccionados"
     type: variable-themed-color
     format: hex
-    default-dark: '#B2F2F4'
+    default-dark: '#FF00FF'
   - id: cg-bg-intensity
     title: Intensidad del Fondo
     description: "Qué tan oscuro es el fondo"
@@ -165,12 +165,12 @@ settings:
 .theme-dark {
   --cg-primary: var(--cg-primary-color, #00FFFF);
   --cg-secondary: var(--cg-secondary-color, #FF00FF);
-  --cg-active: var(--cg-active-color, #B2F2F4);
+  --cg-active: var(--cg-active-color, #FF00FF);
 
   /* Variables RGB para uso en rgba() */
   --cg-primary-rgb: 0, 255, 255;
   --cg-secondary-rgb: 255, 0, 255;
-  --cg-active-rgb: 178, 242, 244;
+  --cg-active-rgb: 255, 0, 255;
 
   /* Variables para bloques de código */
   --cg-code-bg: #000000;
@@ -287,7 +287,13 @@ settings:
 
 /* Estado activo */
 .is-active svg,
-.is-selected svg {
+.is-selected svg,
+.is-active .clickable-icon svg,
+.is-active .nav-action-button svg,
+.is-active .tab-header-icon svg,
+.workspace-tab-header.is-active svg,
+.side-dock-ribbon-action.is-active svg,
+.nav-file-title.is-active svg {
   color: var(--cg-active);
   stroke: var(--cg-active);
   --icon-color: var(--cg-active);
@@ -423,7 +429,7 @@ settings:
   transform-origin: 50% 50%;
   padding: 0.5rem;
   color: var(--cg-secondary);
-  background-color: var(--background-primary);
+  background-color: var(--cg-bg-secondary);
 }
 
 /* Links */
@@ -799,12 +805,24 @@ body.cg-card-layout .workspace-leaf-content {
 /* Status bar — oculta por defecto, visible cuando cg-status-bar está activo */
 .status-bar {
   display: none;
-  background-color: var(--cg-bg-primary);
+  background-color: color-mix(in srgb, var(--cg-bg-secondary) 80%, black);
   color: var(--cg-text-faint);
-  border-top: 1px solid rgba(var(--cg-primary-rgb), 0.05);
 }
 .cg-status-bar .status-bar {
   display: flex;
+}
+.status-bar .status-bar-item {
+  color: var(--cg-primary);
+}
+.status-bar .status-bar-item svg {
+  color: var(--cg-primary);
+  stroke: var(--cg-primary);
+  --icon-color: var(--cg-primary);
+}
+.status-bar .status-bar-item:last-child svg {
+  color: var(--cg-text-faint);
+  stroke: var(--cg-text-faint);
+  --icon-color: var(--cg-text-faint);
 }
 
 /* Ribbon */
@@ -1061,10 +1079,14 @@ body.cg-card-layout .view-header {
   background-color: var(--cg-bg-secondary);
   border: 1px solid rgba(var(--cg-primary-rgb), 0.08);
 }
+.prompt-input-container {
+  border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0;
+}
 .prompt-input {
   background-color: var(--cg-bg-tertiary);
   color: var(--cg-text);
   border: 1px solid rgba(var(--cg-primary-rgb), 0.08);
+  border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0 !important;
 }
 
 .prompt-input:focus {
