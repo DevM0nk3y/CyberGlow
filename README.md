@@ -23,7 +23,7 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Screenshots
 
-![Screenshot](Assets/screenshot.png)
+![Screenshot](preview.png)
 
 ---
 
