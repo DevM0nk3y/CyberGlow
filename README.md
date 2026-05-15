@@ -2,6 +2,8 @@
 
 A neon cyberpunk theme for Obsidian.
 
+![Screenshot](preview.png)
+
 ---
 
 Dark mode only. Built around a cyan and magenta palette with Xcode Midnight syntax highlighting, card layout, and deep Style Settings integration.
@@ -14,16 +16,10 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 - Neon cyberpunk aesthetic with cyan (#00FFFF) and magenta (#FF00FF) accents
 - Xcode Midnight color scheme for code blocks (CodeMirror 6 + Prism.js)
 - Card layout with separate toggles for content, file browser, and actions panel
-- 21 Style Settings options across four categories
+- 14 Style Settings options across three categories
 - Compatible with the Code Styler plugin (dual selectors)
 - Hidden borders, slim scrollbars, customizable tab gap
 - Three background intensity presets: Abyss, Default, Elevated
-
----
-
-## Screenshots
-
-![Screenshot](preview.png)
 
 ---
 
@@ -42,7 +38,7 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Style Settings
 
-Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin. 21 options organized into four categories:
+Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin. 14 options organized into three categories:
 
 ### Colors
 - Primary color (default: cyan)
