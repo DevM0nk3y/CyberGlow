@@ -201,7 +201,11 @@ settings:
     description: "https://github.com/DevM0nk3y/CyberGlow/issues"
     type: info-text
     markdown: true
-
+  - id: cg-url-donate
+    title: "☕ Buy Me a Coffee via Paypal"
+    description: "<details><summary><b>Choose your support tier</b></summary><br><ul style='list-style:none; padding-left:10px;'><li style='margin-bottom:6px;'>☕ <a href='https://www.paypal.com/paypalme/abellazaro067/3usd'>Tier 1: Donate $3 USD</a></li><li style='margin-bottom:6px;'>☕ ☕ <a href='https://www.paypal.com/paypalme/abellazaro067/5usd'>Tier 2: Donate $5 USD</a></li><li style='margin-bottom:6px;'>☕ ☕ ☕ <a href='https://www.paypal.com/paypalme/abellazaro067/10usd'>Tier 3: Donate $10 USD</a></li></ul></details>"
+    type: info-text
+    markdown: true
 */
 
 
@@ -400,9 +404,9 @@ settings:
 .mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
   background: var(--tab-background);
   border-radius: 6px;
-  box-shadow: none !important;
+  box-shadow: none;
   height: var(--tab-height);
-  padding: 0 !important;
+  padding: 0;
   border: 1px solid rgba(var(--cg-primary-rgb), 0.08);
 }
 
@@ -428,7 +432,7 @@ settings:
 }
 
 .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  color: var(--cg-primary) !important;
+  color: var(--cg-primary);
 }
 
 .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
@@ -625,34 +629,33 @@ settings:
 .markdown-rendered code .token.variable { color: #00B1FF; }
 .markdown-rendered code .token.parameter.variable { color: #00B1FF; }
 
-/* --- Code-styler plugin (con !important para ganar especificidad) --- */
 pre.code-styler-pre,
 pre.code-styler-pre code {
-  background-color: var(--cg-code-bg) !important;
-  color: var(--cg-code-text) !important;
+  background-color: var(--cg-code-bg);
+  color: var(--cg-code-text);
 }
 pre.code-styler-pre .token.comment,
-pre.code-styler-pre .token.prolog { color: #4BD156 !important; }
+pre.code-styler-pre .token.prolog { color: #4BD156; }
 pre.code-styler-pre .token.string,
 pre.code-styler-pre .token.attr-value,
-pre.code-styler-pre .token.regex { color: #FF4647 !important; }
+pre.code-styler-pre .token.regex { color: #FF4647; }
 pre.code-styler-pre .token.number,
 pre.code-styler-pre .token.boolean,
-pre.code-styler-pre .token.constant { color: #8B87FF !important; }
+pre.code-styler-pre .token.constant { color: #8B87FF; }
 pre.code-styler-pre .token.keyword,
-pre.code-styler-pre .token.important { color: #DE38A5 !important; }
-pre.code-styler-pre .token.function { color: #08FA95 !important; }
+pre.code-styler-pre .token.important { color: #DE38A5; }
+pre.code-styler-pre .token.function { color: #08FA95; }
 pre.code-styler-pre .token.class-name,
 pre.code-styler-pre .token.builtin,
-pre.code-styler-pre .token.property { color: #00B1FF !important; }
+pre.code-styler-pre .token.property { color: #00B1FF; }
 pre.code-styler-pre .token.tag,
-pre.code-styler-pre .token.selector { color: #EB905A !important; }
-pre.code-styler-pre .token.attr-name { color: #3B5AAC !important; }
+pre.code-styler-pre .token.selector { color: #EB905A; }
+pre.code-styler-pre .token.attr-name { color: #3B5AAC; }
 pre.code-styler-pre .token.operator,
-pre.code-styler-pre .token.punctuation { color: var(--cg-code-text) !important; }
-pre.code-styler-pre .token.parameter { color: #EB905A !important; }
-pre.code-styler-pre .token.variable { color: #00B1FF !important; }
-pre.code-styler-pre .token.parameter.variable { color: #00B1FF !important; }
+pre.code-styler-pre .token.punctuation { color: var(--cg-code-text); }
+pre.code-styler-pre .token.parameter { color: #EB905A; }
+pre.code-styler-pre .token.variable { color: #00B1FF; }
+pre.code-styler-pre .token.parameter.variable { color: #00B1FF; }
 
 
 /* ============================================================
@@ -688,16 +691,16 @@ input[type="checkbox"]:checked {
 body.cg-hide-borders .workspace-leaf,
 body.cg-hide-borders .workspace-tab-header-container,
 body.cg-hide-borders .workspace-split {
-  border: none !important;
+  border: none;
 }
 body.cg-hide-borders.cg-card-layout {
   --cg-card-outline-color: transparent;
 }
 body.cg-hide-borders.cg-card-layout .menu {
-  border: none !important;
+  border: none;
 }
 body.cg-hide-borders.cg-tab-floating .workspace-tab-header {
-  border: none !important;
+  border: none;
 }
 
 /* -----------------------------------------------
@@ -784,7 +787,7 @@ body.cg-card-layout .mod-right-split .workspace-leaf {
 
 /* Paneles laterales — sobreescribir variables de Obsidian en el scope del sidebar.
  * Obsidian aplica --background-primary en workspace-leaf-content vía sus CSS base.
- * Al redefinirla aquí, el leaf-content hereda el color de card sin necesitar !important. */
+ * Al redefinirla aquí, el leaf-content hereda el color de card sin necesitar . */
 body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content:not([data-type="file-explorer"]),
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content {
   --background-primary: var(--cg-card-fg);
@@ -805,7 +808,7 @@ body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .tr
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .search-result-container,
 body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-content,
 body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-header {
-  background-color: var(--cg-card-fg) !important;
+  background-color: var(--cg-card-fg);
 }
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .view-header,
 body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-header {
@@ -1079,7 +1082,7 @@ body.cg-card-layout.cg-card-actions .side-dock-actions {
 
 /* View header — parte de la card */
 body.cg-card-layout .view-header {
-  background-color: var(--cg-bg-secondary) !important;
+  background-color: var(--cg-bg-secondary);
   border-bottom: 1px solid rgba(var(--cg-primary-rgb), 0.05);
 }
 
@@ -1144,7 +1147,7 @@ body.cg-card-layout .view-header {
   background-color: var(--cg-bg-tertiary);
   color: var(--cg-text);
   border: 1px solid rgba(var(--cg-primary-rgb), 0.08);
-  border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0 !important;
+  border-radius: var(--radius-l, 8px) var(--radius-l, 8px) 0 0;
 }
 
 .prompt-input:focus {
@@ -1174,13 +1177,13 @@ em, .cm-em { color: var(--cg-text); }
 /* Bold en color primario */
 .cg-colored-bold strong,
 .cg-colored-bold .cm-strong {
-  color: var(--cg-primary) !important;
+  color: var(--cg-primary);
 }
 
 /* Italic en color activo */
 .cg-colored-italic em,
 .cg-colored-italic .cm-em {
-  color: var(--cg-active) !important;
+  color: var(--cg-active);
 }
 
 /* Headings con gradiente neon */
@@ -1351,7 +1354,7 @@ em, .cm-em { color: var(--cg-text); }
 
 /* Line numbers del code-styler */
 .code-styler-line-number {
-  color: var(--cg-text-faint) !important;
+  color: var(--cg-text-faint);
 }
 
 /* -----------------------------------------------
@@ -1468,9 +1471,9 @@ body.cg-tab-floating .mod-vertical:not(.mod-left-split):not(.mod-right-split) .w
 body.cg-tab-floating .mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
   background: var(--tab-background);
   border-radius: 6px;
-  box-shadow: none !important;
+  box-shadow: none;
   height: var(--tab-height);
-  padding: 0 !important;
+  padding: 0;
   transition: 400ms, background-color 150ms ease-in-out;
   border: 1px solid rgba(var(--cg-primary-rgb), 0.12);
 }
@@ -1498,7 +1501,7 @@ body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-
 }
 
 body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  color: var(--cg-primary) !important;
+  color: var(--cg-primary);
 }
 
 body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
@@ -1532,7 +1535,7 @@ body.cg-tab-minimal {
 /* Visual alignment: align tabs with card edge */
 body.cg-tab-floating .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner,
 body.cg-tab-minimal .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner {
-  justify-content: flex-start !important;
+  justify-content: flex-start;
 }
 
 /* All tabs: fully transparent, no shadow, no border */

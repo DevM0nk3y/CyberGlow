@@ -23,6 +23,32 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ---
 
+## Screenshots
+
+####Light Mode
+
+> ### ☀️ Coming Soon
+> **The bright side of CyberGlow is currently in development.**
+> We are carefully adapting the neon color palette to deliver a high-fidelity light mode that retains the same cyberpunk energy while remaining perfectly readable.
+> 
+> <div align="center">
+>   <p>Development in progress:</p>
+>   <img src="Assets/loading.gif" alt="Loading Progress Bar" width="120" style="mix-blend-mode: multiply;">
+> </div>
+
+---
+
+####Dark Mode
+
+
+#####Desktop
+<img src="Assets/desktopScreen.png" alt="Desktop Screenshot" width="70%">
+
+#####mobile
+<img src="Assets/mobileScreen.png" alt="Mobile Screenshot" width="220">
+
+---
+
 ## Color Palette
 
 | Role       | Hex       | Description       |
