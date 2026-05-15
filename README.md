@@ -25,13 +25,15 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Screenshots
 
-####Dark Mode
+#### Dark Mode
 
 
-#####Desktop
+##### 💻Desktop
+
 <img src="Assets/desktopScreen.png" alt="Desktop Screenshot" width="70%">
 
-#####mobile
+##### 📱mobile
+
 <img src="Assets/mobileScreen.png" alt="Mobile Screenshot" width="220">
 
 ---
