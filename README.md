@@ -14,7 +14,7 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 - Neon cyberpunk aesthetic with cyan (#00FFFF) and magenta (#FF00FF) accents
 - Xcode Midnight color scheme for code blocks (CodeMirror 6 + Prism.js)
 - Card layout with separate toggles for content, file browser, and actions panel
-- 19 Style Settings options across four categories
+- 21 Style Settings options across four categories
 - Compatible with the Code Styler plugin (dual selectors)
 - Hidden borders, slim scrollbars, customizable tab gap
 - Three background intensity presets: Abyss, Default, Elevated
@@ -42,7 +42,7 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Style Settings
 
-Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin. 19 options organized into four categories:
+Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin. 21 options organized into four categories:
 
 ### Colors
 - Primary color (default: cyan)
@@ -55,18 +55,17 @@ Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-setting
 - Italic in active color
 - Headings with neon gradient
 
-### Code Blocks
-- Xcode Midnight syntax highlighting toggle
-
-### Interface
-- Hide borders
-- Card layout (content, file browser, actions panel -- separate toggles)
-- Card shadows
-- Show / hide status bar
-- Tab gap
-- Floating header
+### Workspace
 - Auto-hide titlebar
 - Slim scrollbars
+- Hide borders
+- Show / hide status bar
+- Tab style (Floating / Minimal)
+- Tab gap
+- Custom tab height
+- Workspace layout (Default / Cards)
+- Card layout toggles (file browser, actions panel)
+- Card shadows
 
 ---
 
