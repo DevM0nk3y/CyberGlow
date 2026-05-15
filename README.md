@@ -79,9 +79,9 @@ Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-setting
 4. Place both files inside that folder.
 5. In Obsidian, go to **Settings > Appearance > Themes** and select **CyberGlow**.
 
-### Community Themes (coming soon)
+### Community Themes
 
-CyberGlow will be submitted to the Obsidian community themes directory. Once approved, you will be able to install it directly from **Settings > Appearance > Themes > Browse**.
+Install directly from Obsidian: **Settings > Appearance > Themes > Browse** and search for **CyberGlow**.
 
 ---
 
