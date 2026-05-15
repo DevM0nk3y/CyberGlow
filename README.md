@@ -2,6 +2,8 @@
 
 A neon cyberpunk theme for Obsidian.
 
+![Screenshot](preview.png)
+
 ---
 
 Dark mode only. Built around a cyan and magenta palette with Xcode Midnight syntax highlighting, card layout, and deep Style Settings integration.
@@ -14,16 +16,10 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 - Neon cyberpunk aesthetic with cyan (#00FFFF) and magenta (#FF00FF) accents
 - Xcode Midnight color scheme for code blocks (CodeMirror 6 + Prism.js)
 - Card layout with separate toggles for content, file browser, and actions panel
-- 19 Style Settings options across four categories
+- 14 Style Settings options across three categories
 - Compatible with the Code Styler plugin (dual selectors)
 - Hidden borders, slim scrollbars, customizable tab gap
 - Three background intensity presets: Abyss, Default, Elevated
-
----
-
-## Screenshots
-
-![Screenshot](screenshot.png)
 
 ---
 
@@ -42,7 +38,7 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Style Settings
 
-Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin. 19 options organized into four categories:
+Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin. 14 options organized into three categories:
 
 ### Colors
 - Primary color (default: cyan)
@@ -55,18 +51,17 @@ Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-setting
 - Italic in active color
 - Headings with neon gradient
 
-### Code Blocks
-- Xcode Midnight syntax highlighting toggle
-
-### Interface
-- Hide borders
-- Card layout (content, file browser, actions panel -- separate toggles)
-- Card shadows
-- Show / hide status bar
-- Tab gap
-- Floating header
+### Workspace
 - Auto-hide titlebar
 - Slim scrollbars
+- Hide borders
+- Show / hide status bar
+- Tab style (Floating / Minimal)
+- Tab gap
+- Custom tab height
+- Workspace layout (Default / Cards)
+- Card layout toggles (file browser, actions panel)
+- Card shadows
 
 ---
 
@@ -80,9 +75,9 @@ Requires the [Style Settings](https://github.com/mgmeyers/obsidian-style-setting
 4. Place both files inside that folder.
 5. In Obsidian, go to **Settings > Appearance > Themes** and select **CyberGlow**.
 
-### Community Themes (coming soon)
+### Community Themes
 
-CyberGlow will be submitted to the Obsidian community themes directory. Once approved, you will be able to install it directly from **Settings > Appearance > Themes > Browse**.
+Install directly from Obsidian: **Settings > Appearance > Themes > Browse** and search for **CyberGlow**.
 
 ---
 

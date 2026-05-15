@@ -480,6 +480,8 @@ settings:
   border-bottom: 1px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, transparent, var(--cg-primary), transparent);
+  position: relative;
+  overflow: visible;
 }
 
 .cm-line hr::after,
@@ -487,12 +489,17 @@ settings:
   content: '§';
   display: inline-block;
   position: absolute;
+  top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%) rotate(60deg);
   transform-origin: 50% 50%;
   padding: 0.5rem;
   color: var(--cg-secondary);
   background-color: var(--cg-bg-secondary);
+}
+
+.community-theme-modal .markdown-rendered hr::after {
+  background-color: var(--modal-background, var(--cg-bg-secondary)); 
 }
 
 /* Links */
