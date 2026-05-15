@@ -88,18 +88,6 @@ settings:
     description: "Headings use neon gradient colors"
     type: class-toggle
     default: false
-  # Code Blocks
-  - id: cg-code-header
-    title: Code Blocks
-    description: "Syntax highlighting and code appearance"
-    type: heading
-    level: 1
-    collapsed: true
-  - id: cg-midnight-toggle
-    title: Xcode Midnight
-    description: "Use Xcode Midnight palette for syntax highlighting"
-    type: class-toggle
-    default: true
   # Workspace
   - id: cg-ui-header
     title: Workspace
@@ -134,30 +122,27 @@ settings:
     type: heading
     level: 2
     collapsed: true
-  -
-      id: cg-tab-style
-      title: "Tab style"
-      type: class-select
-      default: cg-tab-floating
-      options:
-          -
-              label: Floating Tabs
-              value: cg-tab-floating
-          -
-              label: Minimal Tabs
-              value: cg-tab-minimal
+  - id: cg-tab-style
+    title: "Tab style"
+    type: class-select
+    default: cg-tab-floating
+    options:
+      - label: Floating Tabs
+        value: cg-tab-floating
+      - label: Minimal Tabs
+        value: cg-tab-minimal
   - id: cg-tab-gap
     title: Tab Gap
     description: "Spacing between workspace tabs"
     type: variable-number
     default: 10
     format: px
-  -
-      id: cg-custom-tab-height
-      title: "Custom tab height"
-      type: variable-number
-      default: 40
-      format: px
+  - id: cg-custom-tab-height
+    title: "Custom tab height"
+    description: "Adjust the height of workspace tabs"
+    type: variable-number
+    default: 40
+    format: px
   - id: cg-workspace-layout-header
     title: Workspace Layout
     description: "Workspace layout and arrangement"
@@ -180,6 +165,7 @@ settings:
     default: true
   - id: cg-card-layout-settings-header
     title: Card Layout Settings
+    description: "Card radius, padding, and component toggles"
     type: heading
     level: 3
     collapsed: true
@@ -485,14 +471,14 @@ settings:
 
 /* HR separadores */
 .cm-line hr,
-.markdown-preview-view hr {
+.markdown-preview-view hr,
+.markdown-rendered hr {
   margin-block-start: 4em;
   margin-block-end: 4em;
   border: none;
   height: 0;
   border-bottom: 1px solid;
   border-image-slice: 1;
-  border-width: 1px;
   border-image-source: linear-gradient(to right, transparent, var(--cg-primary), transparent);
 }
 
@@ -701,7 +687,7 @@ body.cg-hide-borders.cg-card-layout {
   --cg-card-outline-color: transparent;
 }
 body.cg-hide-borders.cg-card-layout .menu {
-  border: 0px !important;
+  border: none !important;
 }
 body.cg-hide-borders.cg-tab-floating .workspace-tab-header {
   border: none !important;
@@ -824,7 +810,6 @@ body.cg-card-layout .workspace-split .mod-stacked .workspace-leaf-content {
   border-radius: 0;
   border: none;
   margin-bottom: 0;
-  border-left: none;
 }
 
 /* Stacked tabs — header con borde card */
@@ -1459,8 +1444,7 @@ body.cg-tab-floating .workspace-tabs:not(.mod-stacked) {
 }
 
 body.cg-tab-floating .workspace-tabs:not(.mod-stacked) .workspace-tab-header::before,
-body.cg-tab-floating .workspace-tabs:not(.mod-stacked) .workspace-tab-header::after,
-body.cg-tab-floating .workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner::after {
+body.cg-tab-floating .workspace-tabs:not(.mod-stacked) .workspace-tab-header::after {
   display: none;
 }
 
@@ -1499,9 +1483,6 @@ body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .works
   color: var(--cg-text-muted);
 }
 
-body.cg-tab-floating .workspace .mod-root .workspace-tab-header-inner::after {
-  display: none;
-}
 
 body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
   flex-grow: 1.67;
@@ -1538,7 +1519,6 @@ body.cg-tab-floating .sidebar-toggle-button.mod-right .clickable-icon {
 /* ---- Minimal Tabs (adapted from AnuPuccin mini-tab style) ---- */
 
 body.cg-tab-minimal {
-  --header-height: var(--cg-custom-tab-height, 40px);
   --tab-stacked-header-width: 40px;
 }
 
@@ -1697,7 +1677,7 @@ body.cg-card-layout .workspace-split:not(.mod-root) .graph-controls {
   margin-bottom: 4px;
 }
 .style-settings-heading[data-level="2"] + .style-settings-container {
-  background-color: rgba(24, 25, 38, 0.3);
+  background-color: color-mix(in srgb, var(--cg-bg-secondary) 30%, transparent);
   padding: 8px 8px 8px 24px;
   border-radius: 8px;
   border: 1px solid rgba(var(--cg-primary-rgb), 0.06);
@@ -1710,7 +1690,7 @@ body.cg-card-layout .workspace-split:not(.mod-root) .graph-controls {
   margin-bottom: 4px;
 }
 .style-settings-heading[data-level="3"] + .style-settings-container {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: color-mix(in srgb, var(--cg-bg-secondary) 40%, transparent);
   padding: 8px 8px 8px 24px;
   border-radius: 8px;
   border: 1px solid rgba(var(--cg-primary-rgb), 0.06);
