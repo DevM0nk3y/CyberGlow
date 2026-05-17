@@ -699,7 +699,12 @@ body.cg-hide-borders.cg-card-layout {
 body.cg-hide-borders.cg-card-layout .menu {
   border: none;
 }
-body.cg-hide-borders.cg-tab-floating .workspace-tab-header {
+body.cg-hide-borders.cg-tab-floating .mod-vertical:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header,
+body.cg-hide-borders.cg-tab-floating .mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
+  border: none;
+}
+body.cg-hide-borders .mod-vertical:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header,
+body.cg-hide-borders .mod-horizontal:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
   border: none;
 }
 
@@ -1474,7 +1479,7 @@ body.cg-tab-floating .mod-horizontal:not(.mod-left-split):not(.mod-right-split) 
   box-shadow: none;
   height: var(--tab-height);
   padding: 0;
-  transition: 400ms, background-color 150ms ease-in-out;
+  transition: flex-grow 400ms ease, max-width 400ms ease, color 400ms ease, opacity 400ms ease, background-color 150ms ease-in-out;
   border: 1px solid rgba(var(--cg-primary-rgb), 0.12);
 }
 
