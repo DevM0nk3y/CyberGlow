@@ -307,8 +307,8 @@ settings:
   --nav-item-background-selected: rgba(var(--cg-primary-rgb), 0.1);
 
   /* Tabs */
-  --tab-text-color: var(--cg-text-muted);
-  --tab-text-color-focused: var(--cg-active);
+  --tab-text-color: var(--cg-secondary);
+  --tab-text-color-focused: rgba(var(--cg-primary-rgb), 0.5);
   --tab-text-color-focused-active: var(--cg-primary);
   --tab-text-color-focused-active-current: var(--cg-primary);
 
@@ -436,12 +436,12 @@ settings:
 }
 
 .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  color: var(--cg-active);
+  color: rgba(var(--cg-primary-rgb), 0.5);
 }
 
 /* Inactive tabs */
 .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title {
-  color: rgba(var(--cg-primary-rgb), 0.5);
+  color: var(--cg-secondary);
 }
 
 .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
@@ -820,6 +820,11 @@ body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .vie
   border-radius: var(--cg-card-radius) var(--cg-card-radius) 0 0;
 }
 
+/* Main editor pane — view-header matches card background */
+body.cg-card-layout .mod-root .workspace-leaf-content .view-header {
+  background-color: var(--cg-card-fg);
+}
+
 /* Stacked tabs — no radius or border (the stacked tab header already has a border) */
 body.cg-card-layout .workspace-split .mod-stacked .workspace-leaf-content {
   border-radius: 0;
@@ -871,8 +876,13 @@ body.cg-card-layout .workspace-leaf-content {
 }
 
 /* Also the markdown editor text area */
-.workspace-leaf-content[data-type="markdown"] .view-content {
-  background-color: var(--cg-bg-secondary);
+.view-content {
+  background-color: var(--cg-bg-primary);
+}
+
+/* Card layout — note content area matches the card shell (--cg-card-fg = --cg-bg-secondary) */
+body.cg-card-layout .mod-root .workspace-leaf-content .view-content {
+  background-color: var(--cg-card-fg);
 }
 
 /* Modal */
@@ -1085,9 +1095,9 @@ body.cg-card-layout.cg-card-actions .side-dock-actions {
   color: rgba(var(--cg-primary-rgb), 0.3);
 }
 
-/* View header — part of the card */
-body.cg-card-layout .view-header {
-  background-color: var(--cg-bg-secondary);
+/* View header — matches ribbon and canvas background */
+.view-header {
+  background-color: var(--cg-bg-primary);
   border-bottom: 1px solid rgba(var(--cg-primary-rgb), 0.05);
 }
 
@@ -1415,10 +1425,39 @@ input[type="range"] {
   stroke: var(--cg-primary);
 }
 
-/* Tab close button */
+/* Tab close button — visibility and color mapping
+ *
+ *  Active tab   → X always visible, cyan
+ *  Inactive tab → X hidden by default
+ *  Inactive tab (hover over the tab) → X dim cyan, visible
+ *  Hover over X itself (any tab) → magenta
+ */
+
+/* Active tab: X always visible in cyan */
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button svg {
+  color: var(--cg-primary);
+  stroke: var(--cg-primary);
+  opacity: 1;
+}
+
+/* Inactive tab: X hidden by default */
+.workspace-tab-header:not(.is-active) .workspace-tab-header-inner-close-button {
+  opacity: 0;
+}
+
+/* Inactive tab — hover over the TAB reveals X in dim cyan */
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button {
+  opacity: 1;
+}
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button svg {
+  color: rgba(var(--cg-primary-rgb), 0.5);
+  stroke: rgba(var(--cg-primary-rgb), 0.5);
+}
+
+/* Hover over the X itself (any tab state) → magenta */
 .workspace-tab-header-inner-close-button:hover svg {
-  color: var(--cg-secondary);
-  stroke: var(--cg-secondary);
+  color: var(--cg-secondary) !important;
+  stroke: var(--cg-secondary) !important;
 }
 
 /* -----------------------------------------------
@@ -1493,7 +1532,6 @@ body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .works
   color: var(--cg-text-muted);
 }
 
-body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button,
 body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon {
   color: var(--cg-text-muted);
 }
@@ -1510,11 +1548,11 @@ body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked).mod-active .wor
 }
 
 body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner-title {
-  color: var(--cg-active);
+  color: rgba(var(--cg-primary-rgb), 0.5);
 }
 
 body.cg-tab-floating .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title {
-  color: rgba(var(--cg-primary-rgb), 0.5);
+  color: var(--cg-secondary);
 }
 
 body.cg-tab-floating .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
