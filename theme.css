@@ -1644,10 +1644,6 @@ body:not(.cg-card-layout) .workspace-leaf {
   border: none;
 }
 
-.view-content {
-  border: none;
-}
-
 body:not(.cg-card-layout) .workspace-split.mod-root .workspace-leaf {
   border: none;
 }
