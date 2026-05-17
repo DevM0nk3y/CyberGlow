@@ -877,6 +877,7 @@ body.cg-card-layout .workspace-leaf-content {
 
 /* Also the markdown editor text area */
 .view-content {
+  border: none;
   background-color: var(--cg-bg-primary);
 }
 
@@ -1456,8 +1457,8 @@ input[type="range"] {
 
 /* Hover over the X itself (any tab state) → magenta */
 .workspace-tab-header-inner-close-button:hover svg {
-  color: var(--cg-secondary) !important;
-  stroke: var(--cg-secondary) !important;
+  color: var(--cg-secondary);
+  stroke: var(--cg-secondary);
 }
 
 /* -----------------------------------------------
