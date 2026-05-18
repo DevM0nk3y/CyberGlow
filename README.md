@@ -6,13 +6,13 @@ A neon cyberpunk theme for Obsidian.
 
 ---
 
-Dark mode only. Built around a cyan and magenta palette with Xcode Midnight syntax highlighting, card layout, and deep Style Settings integration.
+Dual-mode theme — dark and light — built around a cyan and magenta palette with Xcode Midnight syntax highlighting, card layout, and deep Style Settings integration.
 
 ---
 
 ## Features
 
-- Dark mode only -- designed for focused, late-night work
+- Dark and light mode support — switch between cyberpunk dark and a clean, bright light variant
 - Neon cyberpunk aesthetic with cyan (#00FFFF) and magenta (#FF00FF) accents
 - Xcode Midnight color scheme for code blocks (CodeMirror 6 + Prism.js)
 - Card layout with separate toggles for content, file browser, and actions panel
@@ -36,7 +36,6 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 
 #### Dark Mode
-
 ##### 💻 Desktop
 
 <img src="Assets/desktopScreenDM.png" alt="Desktop Screenshot" width="70%">
@@ -49,6 +48,8 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Color Palette
 
+### Dark Mode
+
 | Role       | Hex       | Description       |
 |------------|-----------|-------------------|
 | Primary    | `#00FFFF` | Cyan              |
@@ -57,6 +58,16 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 | Background | `#0a0a0f` | Near-black base   |
 | Card       | `#181825` | Surface / card bg |
 | Text       | `#e0e0e8` | Default body text |
+
+### Light Mode
+
+| Role       | Hex       | Description               |
+|------------|-----------|---------------------------|
+| Primary    | `#00CCCC` | Teal cyan                 |
+| Secondary  | `#CC00CC` | Deep magenta              |
+| Background | `#F5F5F5` | Off-white base            |
+| Surface    | `#ECECEC` | Card / panel surface      |
+| Text       | `#1a1a2e` | Dark navy body text       |
 
 ---
 
