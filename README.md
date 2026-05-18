@@ -2,7 +2,7 @@
 
 A neon cyberpunk theme for Obsidian.
 
-![Screenshot](preview.png)
+![Screenshot](preview2.png)
 
 ---
 
@@ -25,16 +25,25 @@ Dark mode only. Built around a cyan and magenta palette with Xcode Midnight synt
 
 ## Screenshots
 
+#### Light Mode
+##### 💻 Desktop
+
+<img src="Assets/desktopScreenLM.png" alt="Desktop Screenshot" width="70%">
+
+##### 📱 mobile
+
+<img src="Assets/mobileScreenLM.png" alt="Mobile Screenshot" width="220">
+
+
 #### Dark Mode
 
+##### 💻 Desktop
 
-##### 💻Desktop
+<img src="Assets/desktopScreenDM.png" alt="Desktop Screenshot" width="70%">
 
-<img src="Assets/desktopScreen.png" alt="Desktop Screenshot" width="70%">
+##### 📱 mobile
 
-##### 📱mobile
-
-<img src="Assets/mobileScreen.png" alt="Mobile Screenshot" width="220">
+<img src="Assets/mobileScreenDM.png" alt="Mobile Screenshot" width="220">
 
 ---
 
