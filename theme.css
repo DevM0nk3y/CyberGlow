@@ -293,27 +293,7 @@ settings:
   --accent-s: 100%;
   --accent-l: 50%;
 
-  --color-red: #FF4647;
-  --color-green: #4BD156;
-  --color-blue: #00B1FF;
-  --color-yellow: #EB905A;
-  --color-cyan: #00FFFF;
   --color-purple: #8B87FF;
-  --color-pink: #DE38A5;
-
-  /* Base scale */
-  --color-base-00: #0a0a0f;
-  --color-base-05: #0e0e15;
-  --color-base-10: #12121a;
-  --color-base-20: #1a1a25;
-  --color-base-25: #1e1e2a;
-  --color-base-30: #22222f;
-  --color-base-35: #282835;
-  --color-base-40: #2e2e3b;
-  --color-base-50: #3a3a4a;
-  --color-base-60: #555570;
-  --color-base-70: #8888a0;
-  --color-base-100: #e0e0e8;
 
   /* Sidebar titles */
   --nav-item-color: var(--cg-text-muted);
@@ -334,14 +314,19 @@ settings:
   --scrollbar-bg: transparent;
   --scrollbar-thumb-bg: rgba(var(--cg-primary-rgb), 0.15);
   --scrollbar-active-thumb-bg: rgba(var(--cg-primary-rgb), 0.3);
+
+  /* ---- Component tokens -------------------------------- */
+  --cg-inline-code-bg:   var(--cg-bg-tertiary);
+  --cg-inline-code-text: var(--cg-primary);
+  --cg-hr-symbol-bg:     var(--cg-bg-secondary);
 }
 
 .theme-light {
 
   /* ---- Accents ----------------------------------------- */
-  --cg-primary:             #009FB8;
+  --cg-primary:             var(--cg-primary-color, #009FB8);
   --cg-primary-rgb:         0, 159, 184;
-  --cg-secondary:           #C4119B;
+  --cg-secondary:           var(--cg-secondary-color, #C4119B);
   --cg-secondary-rgb:       196, 17, 155;
 
   /* ---- Backgrounds ------------------------------------- */
@@ -358,14 +343,14 @@ settings:
   --cg-text-faint:          #9090A8;
 
   /* ---- Borders ----------------------------------------- */
-  --cg-border-faint:        rgba(0, 159, 184, 0.10);
-  --cg-border:              rgba(0, 159, 184, 0.18);
-  --cg-border-strong:       rgba(0, 159, 184, 0.30);
+  --cg-border-faint:        rgba(var(--cg-primary-rgb), 0.10);
+  --cg-border:              rgba(var(--cg-primary-rgb), 0.18);
+  --cg-border-strong:       rgba(var(--cg-primary-rgb), 0.30);
 
   /* ---- Cards ------------------------------------------- */
   --cg-card-bg:             #FFFFFF;
   --cg-card-fg:             #F5F5FA;
-  --cg-card-outline-color:  rgba(0, 159, 184, 0.15);
+  --cg-card-outline-color:  rgba(var(--cg-primary-rgb), 0.15);
 
   /* ---- Heading gradient stops -------------------------- */
   --cg-h1: #009FB8;
@@ -390,7 +375,7 @@ settings:
   --interactive-accent-hover:    var(--cg-secondary);
 
   /* ---- Active state ------------------------------------ */
-  --cg-active:              var(--cg-secondary);
+  --cg-active:              var(--cg-active-color, #C4119B);
   --cg-active-rgb:          var(--cg-secondary-rgb);
 
   /* ---- Interactive ------------------------------------- */
@@ -416,27 +401,18 @@ settings:
 
   /* ---- Scrollbar --------------------------------------- */
   --scrollbar-bg:           transparent;
-  --scrollbar-thumb-bg:     rgba(0, 159, 184, 0.25);
-  --scrollbar-active-thumb-bg: rgba(0, 159, 184, 0.45);
-
-  /* ---- Color base scale (light: 00=lightest, 100=darkest) */
-  --color-base-00:  #F5F5FA;
-  --color-base-05:  #EFEFF5;
-  --color-base-10:  #E8E8F0;
-  --color-base-20:  #DCDCE8;
-  --color-base-25:  #D0D0E0;
-  --color-base-30:  #C4C4D8;
-  --color-base-35:  #B0B0C8;
-  --color-base-40:  #9090A8;
-  --color-base-50:  #6B6B85;
-  --color-base-60:  #5A5A70;
-  --color-base-70:  #474760;
-  --color-base-100: #1A1A25;
+  --scrollbar-thumb-bg:     rgba(var(--cg-primary-rgb), 0.25);
+  --scrollbar-active-thumb-bg: rgba(var(--cg-primary-rgb), 0.45);
 
   /* ---- Accent HSL (Obsidian internal) ------------------ */
   --accent-h: 190;
   --accent-s: 100%;
   --accent-l: 36%;
+
+  /* ---- Component tokens -------------------------------- */
+  --cg-inline-code-bg:   var(--cg-code-bg);
+  --cg-inline-code-text: var(--cg-code-text);
+  --cg-hr-symbol-bg:     var(--cg-bg-secondary);
 
   .callout .callout-content {
     color: var(--text-normal);
@@ -623,17 +599,17 @@ settings:
   content: '§';
   display: inline-block;
   position: absolute;
-  top: 50%; 
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(60deg);
   transform-origin: 50% 50%;
   padding: 0.5rem;
   color: var(--cg-secondary);
-  background-color: var(--cg-bg-secondary);
+  background-color: var(--cg-hr-symbol-bg);
 }
 
 .community-theme-modal .markdown-rendered hr::after {
-  background-color: var(--modal-background, var(--cg-bg-secondary)); 
+  background-color: var(--modal-background, var(--cg-bg-secondary));
 }
 
 /* Links */
@@ -663,16 +639,16 @@ settings:
   border-collapse: collapse;
 }
 
-.markdown-rendered th {
-  background-color: var(--cg-bg-tertiary);
-  color: var(--cg-primary);
-  font-weight: 600;
-}
-
 .markdown-rendered td,
 .markdown-rendered th {
   border: 1px solid rgba(var(--cg-primary-rgb), 0.1);
   padding: 6px 12px;
+}
+
+.markdown-rendered th {
+  background-color: var(--cg-bg-tertiary);
+  color: var(--cg-primary);
+  font-weight: 600;
 }
 
 .markdown-rendered tr:hover td {
@@ -751,7 +727,7 @@ settings:
 .markdown-rendered code .token.builtin,
 .markdown-rendered code .token.property { color: #00B1FF; }
 .markdown-rendered code .token.tag,
-.markdown-rendered code .token.selector { color: #EB905A; }
+.markdown-rendered code .token.selector { color: #EB905A; background: transparent; }
 .markdown-rendered code .token.attr-name { color: #3B5AAC; }
 .markdown-rendered code .token.operator,
 .markdown-rendered code .token.punctuation { color: var(--cg-code-text); }
@@ -779,7 +755,7 @@ pre.code-styler-pre .token.class-name,
 pre.code-styler-pre .token.builtin,
 pre.code-styler-pre .token.property { color: #00B1FF; }
 pre.code-styler-pre .token.tag,
-pre.code-styler-pre .token.selector { color: #EB905A; }
+pre.code-styler-pre .token.selector { color: #EB905A; background: transparent; }
 pre.code-styler-pre .token.attr-name { color: #3B5AAC; }
 pre.code-styler-pre .token.operator,
 pre.code-styler-pre .token.punctuation { color: var(--cg-code-text); }
@@ -875,7 +851,6 @@ body.cg-card-layout .mod-left-split,
 body.cg-card-layout .mod-vertical .workspace-tab-container,
 body.cg-card-layout .mod-vertical,
 body.cg-card-layout .workspace-split.mod-vertical,
-body.cg-card-layout .workspace-fake-target-overlay:not(.is-in-sidebar) .workspace-tabs .workspace-leaf,
 body.cg-card-layout .mod-root .workspace-tabs .workspace-leaf,
 body.cg-card-layout .workspace-ribbon.mod-left,
 body.cg-card-layout .workspace-ribbon.mod-left:before {
@@ -940,17 +915,16 @@ body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content {
 
 /* Sidebars — force card background on ALL children */
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .view-content,
-body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .view-header,
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .backlink-pane,
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .outgoing-link-pane,
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .tree-item-self,
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .search-result-container,
-body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-content,
-body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-header {
+body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-content {
   background-color: var(--cg-card-fg);
 }
 body.cg-card-layout .workspace-split.mod-right-split .workspace-leaf-content .view-header,
 body.cg-card-layout .workspace-split.mod-left-split .workspace-leaf-content .view-header {
+  background-color: var(--cg-card-fg);
   border-radius: var(--cg-card-radius) var(--cg-card-radius) 0 0;
 }
 
@@ -1322,8 +1296,8 @@ body.cg-card-layout.cg-card-actions .side-dock-actions {
 /* Inline code */
 .cm-inline-code,
 .markdown-rendered code:not(pre code) {
-  background-color: var(--cg-bg-tertiary);
-  color: var(--cg-primary);
+  background-color: var(--cg-inline-code-bg);
+  color: var(--cg-inline-code-text);
   padding: 2px 4px;
   border-radius: 3px;
 }
@@ -1702,7 +1676,7 @@ body.cg-tab-floating .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-
 
 body.cg-tab-floating .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
   padding: 0 4px 0 8px;
-  transition: 400ms, background-color 150ms ease-in-out, max-width 400ms;
+  transition: color 400ms, background-color 150ms ease-in-out, max-width 400ms;
   color: var(--cg-text-muted);
 }
 
