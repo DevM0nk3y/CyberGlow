@@ -1406,18 +1406,18 @@ em, .cm-em { color: var(--cg-text); }
  * ----------------------------------------------- */
 
 .callout {
-  --callout-color: 0, 255, 255;
-  background-color: rgba(var(--callout-color), 0.05);
+  --callout-color: rgb(0, 255, 255);
+  background-color: color-mix(in srgb, var(--callout-color) 5%, transparent);
   border-radius: 8px;
   border: none;
 }
 
 .theme-light .callout {
-  --callout-color: 0, 159, 184;
+  --callout-color: rgb(0, 159, 184);
 }
 
 .callout-title {
-  color: rgb(var(--callout-color));
+  color: var(--callout-color);
 }
 
 .callout-content {
@@ -1427,38 +1427,38 @@ em, .cm-em { color: var(--cg-text); }
 .callout[data-callout="warning"],
 .callout[data-callout="caution"],
 .callout[data-callout="advertencia"],
-.callout[data-callout="precaución"] { --callout-color: 235, 144, 90; }
+.callout[data-callout="precaución"] { --callout-color: rgb(235, 144, 90); }
 
 .callout[data-callout="danger"],
 .callout[data-callout="error"],
 .callout[data-callout="bug"],
-.callout[data-callout="peligro"] { --callout-color: 255, 70, 71; }
+.callout[data-callout="peligro"] { --callout-color: rgb(255, 70, 71); }
 
 .callout[data-callout="tip"],
 .callout[data-callout="success"],
 .callout[data-callout="hint"],
 .callout[data-callout="consejo"],
-.callout[data-callout="éxito"] { --callout-color: 75, 209, 86; }
+.callout[data-callout="éxito"] { --callout-color: rgb(75, 209, 86); }
 
 .callout[data-callout="info"],
 .callout[data-callout="note"],
 .callout[data-callout="nota"],
-.callout[data-callout="información"] { --callout-color: 0, 255, 255; }
+.callout[data-callout="información"] { --callout-color: rgb(0, 255, 255); }
 
 .callout[data-callout="question"],
 .callout[data-callout="pregunta"],
-.callout[data-callout="help"] { --callout-color: 139, 135, 255; }
+.callout[data-callout="help"] { --callout-color: rgb(139, 135, 255); }
 
 .callout[data-callout="example"],
-.callout[data-callout="ejemplo"] { --callout-color: 222, 56, 165; }
+.callout[data-callout="ejemplo"] { --callout-color: rgb(222, 56, 165); }
 
 .callout[data-callout="quote"],
 .callout[data-callout="cite"],
-.callout[data-callout="cita"] { --callout-color: 136, 136, 160; }
+.callout[data-callout="cita"] { --callout-color: rgb(136, 136, 160); }
 
 .callout[data-callout="abstract"],
 .callout[data-callout="summary"],
-.callout[data-callout="resumen"] { --callout-color: 0, 177, 255; }
+.callout[data-callout="resumen"] { --callout-color: rgb(0, 177, 255); }
 
 /* -----------------------------------------------
  *  Inline Title (note filename as heading)
